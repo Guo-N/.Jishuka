@@ -1,1 +1,17 @@
-# Arithmetic-Practice
+##sql脚本
+```sql
+create table USER
+(
+	ID INTEGER default NEXT VALUE FOR "PUBLIC"."SYSTEM_SEQUENCE_0D3D8C01_031E_4299_8B9A_8D21EFCDD28D" auto_increment,
+	ACCOUNT_ID VARCHAR(100),
+	NAME VARCHAR(15),
+	TOKEN CHAR(36),
+	GMT_CREATE BIGINT,
+	GMT_MODIFIED BIGINT,
+	constraint USER_PK
+		primary key (ID)
+);
+```
+
+
+
