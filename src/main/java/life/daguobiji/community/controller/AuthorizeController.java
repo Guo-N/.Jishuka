@@ -1,10 +1,10 @@
 package life.daguobiji.community.controller;
 
-import life.daguobiji.community.Model.User;
+import life.daguobiji.community.model.User;
 import life.daguobiji.community.dto.AccessTokenDTO;
 import life.daguobiji.community.dto.GithubUser;
-import life.daguobiji.community.mapper.UserMapper;
 import life.daguobiji.community.provider.GithubProvider;
+import life.daguobiji.community.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
@@ -32,7 +32,7 @@ public class AuthorizeController {
     private String redirectUri;
 
     @Autowired
-    private UserMapper userMapper;
+    private UserService userService;
 
     @GetMapping("/callback")
     public String callback(@RequestParam(name = "code") String code,
@@ -53,14 +53,21 @@ public class AuthorizeController {
             user.setToken(token);
             user.setName(githubUser.getName());
             user.setAccountId(String.valueOf(githubUser.getId()));
-            user.setGmtCreate(System.currentTimeMillis());
-            user.setGmtModified(user.getGmtCreate());
-            userMapper.insert(user);
+            user.setAvatarUrl(githubUser.getAvatar_url());
+            userService.createOrUpdate(user);
             response.addCookie(new Cookie("token",token));
-            //request.getSession().setAttribute("githubUser",githubUser);
             return "redirect:/";
         }else{
             return "redirect:/";
         }
+     }
+     @GetMapping("/logout")
+     public String logout(HttpServletRequest request,
+                          HttpServletResponse response){
+        request.getSession().removeAttribute("user");
+        Cookie cookie=new Cookie("token",null);
+        cookie.setMaxAge(0);
+        response.addCookie(cookie);
+         return "redirect:/";
      }
 }
