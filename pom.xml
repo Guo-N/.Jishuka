@@ -92,7 +92,7 @@
 			<plugin>
 				<groupId>org.flywaydb</groupId>
 				<artifactId>flyway-maven-plugin</artifactId>
-				<version>7.3.1</version>
+				<version>5.2.4</version>
 				<configuration>
 					<url>jdbc:mysql://172.21.0.8:3306/jishuka</url>
 					<user>root</user>
