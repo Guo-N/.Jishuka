@@ -94,7 +94,7 @@
 				<artifactId>flyway-maven-plugin</artifactId>
 				<version>5.2.4</version>
 				<configuration>
-					<url>jdbc:mysql://172.21.0.8:3306/jishuka</url>
+					<url>jdbc:mysql://172.21.0.8:3306/jishuka?serverTimezone=GMT&useSSL=true</url>
 					<user>root</user>
 					<password>gjn1741279100</password>
 				</configuration>
