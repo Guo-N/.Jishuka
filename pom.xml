@@ -94,16 +94,16 @@
 				<artifactId>flyway-maven-plugin</artifactId>
 				<version>5.2.4</version>
 				<configuration>
-					<url>jdbc:mysql://172.21.0.8:3306/jishuka?serverTimezone=GMT&useSSL=true</url>
+					<url>jdbc:mysql://cdb-j96lfu7e.bj.tencentcdb.com:10029/jishuka</url>
 					<user>root</user>
 					<password>gjn1741279100</password>
 				</configuration>
 				<dependencies>
-					<dependency>
-						<groupId>mysql</groupId>
-						<artifactId>mysql-connector-java</artifactId>
-						<version>8.0.16</version>
-					</dependency>
+                    <dependency>
+                        <groupId>mysql</groupId>
+                        <artifactId>mysql-connector-java</artifactId>
+                        <version>8.0.16</version>
+                    </dependency>
 					<dependency>
 						<groupId>com.h2database</groupId>
 						<artifactId>h2</artifactId>
